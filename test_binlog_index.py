@@ -4,10 +4,13 @@ import numpy as np
 import pandas as pd
 import logging as log
 import time
+import sys
 
-
-connections.connect(host="10.104.4.47", port="19530")
-log.basicConfig(filename='test_binlog_delete_3.log', level=log.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+args = sys.argv
+HOST = args[1]
+PORT = args[2]
+connections.connect(host=HOST, port=PORT)
+log.basicConfig(filename='test_binlog.log', level=log.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 collection_name = "test_binlog_true"
 dim = 768
