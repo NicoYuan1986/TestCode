@@ -15,11 +15,13 @@ dim = 128
 
 print(fmt.format("start connecting to Milvus"))
 uri = os.environ.get('MILVUS_URI')
+token = os.environ.get('TOKEN')
 if uri is None:
     print("URI should not be None")
     assert False
 print(fmt.format(f"Milvus uri: {uri}"))
-connections.connect(uri=uri, token="db_admin:Milvus123")
+token = "db_admin:Milvus123" if token is None else token
+connections.connect(uri=uri, token=token)
 
 
 collection_name = "major_compaction_collection_enable_scalar_clustering_key_1kw"
